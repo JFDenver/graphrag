@@ -89,6 +89,7 @@ def get_completion_llm_args(
 
 def try_parse_json_object(input: str) -> dict:
     """Generate JSON-string output using best-attempt prompting & parsing techniques."""
+    input = input.replace('{{', '{').replace('}}', '}')
     try:
         result = json.loads(input)
     except json.JSONDecodeError:
